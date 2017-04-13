@@ -16,7 +16,9 @@ help:
 
 install:
 	curl -sSO https://raw.githubusercontent.com/humangas/fileopener/master/fileopener.sh
-	chmod +x fileopener.sh
+	rm -rf /usr/local/bin/fileopener
+	ln -s $(PWD)/fileopener.sh /usr/local/bin/fileopener
+	chmod +x /usr/local/bin/fileopener
 	rm -rf /usr/local/bin/$(CMDNAME)
 	ln -s $(PWD)/memoru.sh /usr/local/bin/$(CMDNAME)
 	chmod +x /usr/local/bin/$(CMDNAME)

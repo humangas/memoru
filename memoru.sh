@@ -3,8 +3,8 @@
 _MM_APPNAME="mm"
 _MM_VERSION="0.0.1"
 _MM_POST_DIR=${_MM_POST_DIR:-~/.config/$_MM_APPNAME/_posts}
-_MM_TEMPLATE_FILE=${_MM_TEMPLATE_FILE:-note.tpl}
-_MM_PREFIX=""
+_MM_TEMPLATE_FILE=${_MM_TEMPLATE_FILE:-}
+_MM_PREFIX=${_MM_PREFIX:-}
 _MM_EXTENSION=".md"
 
 
@@ -46,9 +46,8 @@ function _new() {
         [[ -z $title ]] && return 1
     fi
 
-    fpath=$_MM_POST_DIR/$title$_MM_EXTENSION
-    tmpl=$(cat ${_MM_TEMPLATE_FILE})
-    echo $tmpl | sed -e "s/\${.Title}/${title}/g" > $fpath
+    fpath=$_MM_POST_DIR/$_MM_PREFIX$title$_MM_EXTENSION
+    echo "$TMPL" | sed -e "s/\${.Title}/${title}/g" > $fpath
 
     mkdir -p $_MM_POST_DIR
     vim "$fpath"
@@ -58,14 +57,14 @@ function _edit() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    ./fileopener.sh $_MM_POST_DIR
+    fileopener $_MM_POST_DIR
 }
 
 function _grep() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    ./fileopener.sh $_MM_POST_DIR --grep
+    fileopener $_MM_POST_DIR --grep
 }
 
 function _list() {
@@ -112,9 +111,13 @@ function _param_check() {
 
     [[ ! -e $_MM_POST_DIR ]] && mkdir -p $_MM_POST_DIR
     
-    if [[ ! -e $_MM_TEMPLATE_FILE ]]; then
+    if [[ -z $_MM_TEMPLATE_FILE ]]; then
+        TMPL='# ${.Title}'
+    elif [[ ! -e $_MM_TEMPLATE_FILE ]]; then
         _is_error=1
         echo "Error: \$_MM_TEMPLATE_FILE is not found."
+    else
+        TMPL=$(cat ${_MM_TEMPLATE_FILE})
     fi
     
     [[ $_is_error -eq 1 ]] && exit 1
