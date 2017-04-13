@@ -1,19 +1,26 @@
+CMDNAME := mm
+
 .DEFAULT_GOAL := help
+
+.PHONY: all help install update
 
 all:
 
 help:
-	@echo "TODO write.."
+	@echo "Usage: make [target]"
+	@echo ""
+	@echo "target:"
+	@echo " - install:   Install memoru.sh as a $(CMDNAME) command."
+	@echo " - update:    After git pull, execute the install command."
+	@echo ""
 
 install:
-	rm -rf /usr/local/bin/memoru
-	ln -s $(PWD)/memoru.sh /usr/local/bin/memoru
-	chmod +x /usr/local/bin/memoru
+	curl -sSO https://raw.githubusercontent.com/humangas/fileopener/master/fileopener.sh
+	chmod +x fileopener.sh
+	rm -rf /usr/local/bin/$(CMDNAME)
+	ln -s $(PWD)/memoru.sh /usr/local/bin/$(CMDNAME)
+	chmod +x /usr/local/bin/$(CMDNAME)
 
-# TODO:
-# - tplも移動する
-# - デフォルトパス変更するmemoruに
-# - envを別にして、make install時に環境変数セットして、それのディレクトリに↑をおいたりする
-# - updateに、git pullさせとく　
-
-.PHONY: all help install
+update:
+	git pull origin master
+	@make install
