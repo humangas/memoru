@@ -4,7 +4,7 @@
 "memoru" is a command line tool to easily take notes from anywhere.
 
 
-# Installation
+## Installation
 ```
 $ git clone https://github.com/humangas/memoru.git
 $ cd memoru
@@ -12,7 +12,7 @@ $ make install
 ```
 
 
-# Usage
+## Usage
 ```
 $ mm --help
 usage: mm [--version] <command> [options] [args]
@@ -38,33 +38,33 @@ customize by setting the following environment variable.
 ```
 
 
-# Dependencies software
+## Dependencies software
 - [fzf](https://github.com/junegunn/fzf)
 - [fasd](https://github.com/clvv/fasd)
 - [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher)
 - [fileopener](https://github.com/humangas/fileopener)
 
-## Installation
-## [fzf](https://github.com/junegunn/fzf#using-homebrew)
+### Installation
+#### [fzf](https://github.com/junegunn/fzf#using-homebrew)
 ```
 $ brew install fzf
 /usr/local/opt/fzf/install
 ```
 
-## [fasd](https://github.com/clvv/fasd#install)
+#### [fasd](https://github.com/clvv/fasd#install)
 ```
 $ brew install fasd
 echo 'eval "$(fasd --init auto)"' >> ~/.zshrc
 ```
 
-## [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher#macos)
+#### [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher#macos)
 ```
 $ brew install ag
 ```
 
-## [fileopener](https://github.com/humangas/fileopener#installation)
+#### [fileopener](https://github.com/humangas/fileopener#installation)
 When installing this tool, it will be installed at the same time.
 
 
-# Other stuff you might like
+## Other stuff you might like
 - [mattn/memo](https://github.com/mattn/memo)
