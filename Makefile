@@ -20,10 +20,10 @@ help:
 install:
 	curl -sSO https://raw.githubusercontent.com/humangas/fileopener/master/fileopener.sh
 	rm -rf $(FO_INSTALLPATH)/$(FO_CMDNAME)
-	cp $(PWD)/fileopener.sh $(FO_INSTALLPATH)/$(FO_CMDNAME)
+	ln -s $(PWD)/fileopener.sh $(FO_INSTALLPATH)/$(FO_CMDNAME)
 	chmod +x $(FO_INSTALLPATH)/$(FO_CMDNAME)
 	rm -rf $(MM_INSTALLPATH)/$(MM_CMDNAME)
-	cp $(PWD)/memoru.sh $(MM_INSTALLPATH)/$(MM_CMDNAME)
+	ln -s $(PWD)/memoru.sh $(MM_INSTALLPATH)/$(MM_CMDNAME)
 	chmod +x $(MM_INSTALLPATH)/$(MM_CMDNAME)
 	@echo ""
 	@echo "Install Completion. Usage: $(MM_CMDNAME) --help"
