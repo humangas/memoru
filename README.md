@@ -19,10 +19,10 @@ usage: mm [--version] <command> [options] [args]
 version: 0.0.1
 
 command:
-    new   |n      Create note
-    list  |l      List note
-    edit  |e      Edit note
-    grep  |g      Grep note
+    new   ,n      Create note
+    list  ,l      List note
+    edit  ,e      Edit note
+    grep  ,g      Grep note
 
 options:
     --full-path   mm list [--full-path]
@@ -35,6 +35,10 @@ customize by setting the following environment variable.
     _MM_TEMPLATE_FILE=
     _MM_PREFIX=
     _MM_EXTENSION=.md
+
+NOTICE:
+    edit, grep function uses the fileopener tool
+    See also: https://github.com/humangas/fileopener
 ```
 
 

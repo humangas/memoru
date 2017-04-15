@@ -13,22 +13,26 @@ echo "usage: $_MM_APPNAME [--version] <command> [options] [args]
 version: $_MM_VERSION
 
 command:
-    new   |n      Create note 
-    list  |l      List note 
-    edit  |e      Edit note 
-    grep  |g      Grep note 
+    new   ,n      Create note
+    list  ,l      List note
+    edit  ,e      Edit note
+    grep  ,g      Grep note
 
 options:
-    --full-path   $_MM_APPNAME list [--full-path] 
+    --full-path   mm list [--full-path]
 
 args:
-    filename      $_MM_APPNAME new [filename]
+    filename      mm new [filename]
 
 customize by setting the following environment variable.
-    _MM_POST_DIR=${_MM_POST_DIR}
-    _MM_TEMPLATE_FILE=${_MM_TEMPLATE_FILE}
-    _MM_PREFIX=${_MM_PREFIX}
-    _MM_EXTENSION=${_MM_EXTENSION}
+    _MM_POST_DIR=/Users/humangas/.config/mm/_posts
+    _MM_TEMPLATE_FILE=
+    _MM_PREFIX=
+    _MM_EXTENSION=.md
+
+NOTICE:
+    edit, grep function uses the fileopener tool
+    See also: https://github.com/humangas/fileopener
 "
 exit 0
 }
