@@ -35,7 +35,6 @@ customize by setting the following environment variable.
     _MM_TEMPLATE_FILE=
     _MM_PREFIX=
     _MM_EXTENSION=.md
-
 ```
 
 
