@@ -6,6 +6,7 @@ _MM_POST_DIR=${_MM_POST_DIR:-~/.config/$_MM_APPNAME/_posts}
 _MM_TEMPLATE_FILE=${_MM_TEMPLATE_FILE:-}
 _MM_PREFIX=${_MM_PREFIX:-}
 _MM_EXTENSION=".md"
+_MM_FILEOPENER="/usr/local/bin/fo"
 
 
 function _usage() {
@@ -61,14 +62,14 @@ function _edit() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    fileopener $_MM_POST_DIR
+    eval "$_MM_FILEOPENER" $_MM_POST_DIR
 }
 
 function _grep() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    fileopener $_MM_POST_DIR --grep
+    eval "$_MM_FILEOPENER" $_MM_POST_DIR --grep
 }
 
 function _list() {
