@@ -31,10 +31,10 @@ args:
     filename      mm new [filename]
 
 customize by setting the following environment variable.
-    _MM_POST_DIR=/Users/humangas/.config/mm/_posts
-    _MM_TEMPLATE_FILE=
-    _MM_PREFIX=
-    _MM_EXTENSION=.md
+    MM_POST_DIR=/Users/humangas/.config/mm/_posts
+    MM_TEMPLATE_FILE=
+    MM_PREFIX=
+    MM_EXTENSION=.md
 
 NOTICE:
     edit, grep function uses the fileopener tool
@@ -43,31 +43,7 @@ NOTICE:
 
 
 ## Dependencies software
-- [fzf](https://github.com/junegunn/fzf)
-- [fasd](https://github.com/clvv/fasd)
-- [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher)
 - [fileopener](https://github.com/humangas/fileopener)
-
-### Installation
-#### [fzf](https://github.com/junegunn/fzf#using-homebrew)
-```
-$ brew install fzf
-/usr/local/opt/fzf/install
-```
-
-#### [fasd](https://github.com/clvv/fasd#install)
-```
-$ brew install fasd
-echo 'eval "$(fasd --init auto)"' >> ~/.zshrc
-```
-
-#### [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher#macos)
-```
-$ brew install ag
-```
-
-#### [fileopener](https://github.com/humangas/fileopener#installation)
-When installing this tool, it will be installed at the same time.
 
 
 ## Other stuff you might like
