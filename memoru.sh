@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-_MM_APPNAME="mm"
-_MM_VERSION="0.0.1"
-_MM_POST_DIR=${_MM_POST_DIR:-~/.config/$_MM_APPNAME/_posts}
-_MM_TEMPLATE_FILE=${_MM_TEMPLATE_FILE:-}
-_MM_PREFIX=${_MM_PREFIX:-}
-_MM_EXTENSION=".md"
-_MM_FILEOPENER="/usr/local/bin/fo"
+MM_APPNAME="mm"
+MM_VERSION="0.0.1"
+MM_POST_DIR=${MM_POST_DIR:-~/.config/$MM_APPNAME/_posts}
+MM_TEMPLATE_FILE=${MM_TEMPLATE_FILE:-}
+MM_PREFIX=${MM_PREFIX:-}
+MM_EXTENSION=".md"
+MM_FILEOPENER="/usr/local/bin/fo"
 
 
 function _usage() {
-echo "usage: $_MM_APPNAME [--version] <command> [options] [args]
-version: $_MM_VERSION
+echo "usage: $MM_APPNAME [--version] <command> [options] [args]
+version: $MM_VERSION
 
 command:
     new   ,n      Create note
@@ -26,10 +26,10 @@ args:
     filename      mm new [filename]
 
 customize by setting the following environment variable.
-    _MM_POST_DIR=/Users/humangas/.config/mm/_posts
-    _MM_TEMPLATE_FILE=
-    _MM_PREFIX=
-    _MM_EXTENSION=.md
+    MM_POST_DIR=/Users/humangas/.config/mm/_posts
+    MM_TEMPLATE_FILE=
+    MM_PREFIX=
+    MM_EXTENSION=.md
 
 NOTICE:
     edit, grep function uses the fileopener tool
@@ -39,7 +39,7 @@ exit 0
 }
 
 function _version() {
-    echo "$_MM_APPNAME $_MM_VERSION"
+    echo "$MM_APPNAME $MM_VERSION"
     exit 0
 }
 
@@ -51,10 +51,10 @@ function _new() {
         [[ -z $title ]] && return 1
     fi
 
-    fpath=$_MM_POST_DIR/$_MM_PREFIX$title$_MM_EXTENSION
+    fpath=$MM_POST_DIR/$MM_PREFIX$title$MM_EXTENSION
     echo "$TMPL" | sed -e "s/\${.Title}/${title}/g" > $fpath
 
-    mkdir -p $_MM_POST_DIR
+    mkdir -p $MM_POST_DIR
     vim "$fpath"
 }
 
@@ -62,14 +62,14 @@ function _edit() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    eval "$_MM_FILEOPENER" $_MM_POST_DIR
+    eval "$MM_FILEOPENER" $MM_POST_DIR
 }
 
 function _grep() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    eval "$_MM_FILEOPENER" $_MM_POST_DIR --grep
+    eval "$MM_FILEOPENER" $MM_POST_DIR --grep
 }
 
 function _list() {
@@ -81,16 +81,16 @@ function _list() {
     local stat_option="%w"
 
     if [[ "$1" == "--full-path" ]]; then
-        for f in $(ls $ls_option $_MM_POST_DIR); do
-            echo "$_MM_POST_DIR/$f"
+        for f in $(ls $ls_option $MM_POST_DIR); do
+            echo "$MM_POST_DIR/$f"
         done
         exit 0
     fi
 
     #echo "$header"
-    for f in $(ls $ls_option $_MM_POST_DIR); do
-       #local fattr=$(stat -c "%w | %y | %x" $_MM_POST_DIR/$f | sed -e 's/\.000000000 +0900//g')
-       local fattr=$(stat -c "$stat_option" $_MM_POST_DIR/$f | sed -e 's/\.000000000 +0900//g')
+    for f in $(ls $ls_option $MM_POST_DIR); do
+       #local fattr=$(stat -c "%w | %y | %x" $MM_POST_DIR/$f | sed -e 's/\.000000000 +0900//g')
+       local fattr=$(stat -c "$stat_option" $MM_POST_DIR/$f | sed -e 's/\.000000000 +0900//g')
        echo "$fattr | $f"
     done
 }
@@ -98,15 +98,15 @@ function _list() {
 function _check_file_exist() {
     local _is_error=0
     
-    if [[ ! -e $_MM_POST_DIR ]]; then
+    if [[ ! -e $MM_POST_DIR ]]; then
         _is_error=1
-    elif [[ $(ls -1 $_MM_POST_DIR | wc -l) -eq 0 ]]; then
+    elif [[ $(ls -1 $MM_POST_DIR | wc -l) -eq 0 ]]; then
         _is_error=1
     fi
 
     if [[ $_is_error -eq 1 ]]; then
-        echo "Error: file is not found. under \$_MM_POST_DIR."
-        echo "-> Run: $_MM_APPNAME new"
+        echo "Error: file is not found. under \$MM_POST_DIR."
+        echo "-> Run: $MM_APPNAME new"
         return 1
     fi
 }
@@ -114,15 +114,15 @@ function _check_file_exist() {
 function _param_check() {
     local _is_error=0
 
-    [[ ! -e $_MM_POST_DIR ]] && mkdir -p $_MM_POST_DIR
+    [[ ! -e $MM_POST_DIR ]] && mkdir -p $MM_POST_DIR
     
-    if [[ -z $_MM_TEMPLATE_FILE ]]; then
+    if [[ -z $MM_TEMPLATE_FILE ]]; then
         TMPL='# ${.Title}'
-    elif [[ ! -e $_MM_TEMPLATE_FILE ]]; then
+    elif [[ ! -e $MM_TEMPLATE_FILE ]]; then
         _is_error=1
-        echo "Error: \$_MM_TEMPLATE_FILE is not found."
+        echo "Error: \$MM_TEMPLATE_FILE is not found."
     else
-        TMPL=$(cat ${_MM_TEMPLATE_FILE})
+        TMPL=$(cat ${MM_TEMPLATE_FILE})
     fi
     
     [[ $_is_error -eq 1 ]] && exit 1
