@@ -16,7 +16,7 @@ $ make install
 ```
 $ mm --help
 usage: mm [--version] <command> [options] [args]
-version: 0.0.1
+version: 0.1.0
 
 command:
     new   ,n      Create note

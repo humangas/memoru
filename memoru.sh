@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MM_APPNAME="mm"
-MM_VERSION="0.0.1"
+MM_VERSION="0.1.0"
 MM_POST_DIR=${MM_POST_DIR:-~/.config/$MM_APPNAME/_posts}
 MM_TEMPLATE_FILE=${MM_TEMPLATE_FILE:-}
 MM_PREFIX=${MM_PREFIX:-}
