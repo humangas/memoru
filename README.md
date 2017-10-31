@@ -1,40 +1,35 @@
-# memoru
+# note
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![OS macOS](https://img.shields.io/badge/OS-macOS-blue.svg)](OS)  
-"memoru" is a command line tool to easily take notes from anywhere.
+"note" is a command line tool to easily take notes from anywhere.
 
 
 ## Installation
 ```
-$ git clone https://github.com/humangas/memoru.git
-$ cd memoru
+$ git clone https://github.com/humangas/note.git
+$ cd note
 $ make install
 ```
 
 
 ## Usage
 ```
-$ mm --help
-usage: mm [--version] <command> [options] [args]
-version: 0.1.0
+$ note --help
+Usage: note [--version] <command> [options] [args]
+version: 0.2.0
 
-command:
-    new   ,n      Create note
-    list  ,l      List note
-    edit  ,e      Edit note
-    grep  ,g      Grep note
+Command:
+    new  <title>          Create note
+    list [--full-path]    List note
+    edit                  Edit note
+    grep                  Grep note
+    open                  Open finder
 
-options:
-    --full-path   mm list [--full-path]
-
-args:
-    filename      mm new [filename]
-
-customize by setting the following environment variable.
-    MM_POST_DIR=/Users/humangas/.config/mm/_posts
-    MM_TEMPLATE_FILE=
-    MM_PREFIX=
-    MM_EXTENSION=.md
+Customize:
+    export NOTE_POST_DIR="~/note"
+    export NOTE_TEMPLATE_FILE=
+    export NOTE_PREFIX=
+    export NOTE_EXTENSION=".md"
 
 NOTICE:
     edit, grep function uses the fileopener tool
