@@ -6,7 +6,7 @@ NOTE_POST_DIR=${NOTE_POST_DIR:-~/note}
 NOTE_TEMPLATE_FILE=${NOTE_TEMPLATE_FILE:-}
 NOTE_PREFIX=${NOTE_PREFIX:-}
 NOTE_EXTENSION=".md"
-NOTE_FILEOPENER="/usr/local/bin/fo"
+NOTE_FILEOPENER="~/bin/fo"
 
 
 function _usage() {
@@ -14,11 +14,11 @@ echo "Usage: $NOTE_APPNAME [--version] <command> [options] [args]
 version: $NOTE_VERSION
 
 Command:
-    new  <title>          Create note
+    new <title>           Create note
     list [--full-path]    List note
     edit                  Edit note
     grep                  Grep note
-    open                  Open finder
+    finder                Open finder
 
 Customize:
     export NOTE_POST_DIR=\"~/note\"
@@ -66,8 +66,8 @@ function _grep() {
     eval "$NOTE_FILEOPENER" $NOTE_POST_DIR --grep
 }
 
-function _open() {
-    open "$NOTE_POST_DIR"
+function _finder() {
+    open -a finder "$NOTE_POST_DIR"
     exit 0
 }
 
@@ -138,13 +138,13 @@ function main() {
     shift
 
     case $subcmd in
-        new|n)    _new "$@" && return ;;
-        list|l)   _list "$@" && return ;;
-        edit|e)   _edit "$@" && return ;;
-        grep|g)   _grep "$@" && return ;;
-        open|o)   _open "$@" && return ;;
-        version)  _version ;;
-        *)        _usage ;;
+        new|n)     _new "$@" && return ;;
+        list|l)    _list "$@" && return ;;
+        edit|e)    _edit "$@" && return ;;
+        grep|g)    _grep "$@" && return ;;
+        finder|f)  _finder "$@" && return ;;
+        version)   _version ;;
+        *)         _usage ;;
     esac
 }
 
