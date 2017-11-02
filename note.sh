@@ -11,7 +11,7 @@ NOTE_FILEOPENER="~/bin/fo"
 
 function _usage() {
 echo "Usage: $NOTE_APPNAME [--version] <command> [<args>]
-version: $NOTE_VERSION
+Version: $NOTE_VERSION
 
 Command:
     new <title>           Create note
