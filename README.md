@@ -32,13 +32,14 @@ Customize:
     export NOTE_EXTENSION=".md"
 
 NOTICE:
-    edit, grep function uses the fileopener tool
-    See also: https://github.com/humangas/fileopener
+    edit, grep function uses the humangas/findgrep
+    See also: https://github.com/humangas/findgrep
+
 ```
 
 
 ## Dependencies software
-- [fileopener](https://github.com/humangas/fileopener)
+- [humangas/findgrep](https://github.com/humangas/findgrep)
 
 
 ## Other stuff you might like
