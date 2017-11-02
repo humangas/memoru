@@ -1,7 +1,7 @@
 NOTE_CMDNAME := note
 NOTE_INSTALLPATH := ~/bin
-FO_CMDNAME := fo 
-FO_INSTALLPATH := ~/bin
+FING_CMDNAME := fing 
+FING_INSTALLPATH := ~/bin
 
 .DEFAULT_GOAL := help
 
@@ -18,10 +18,10 @@ help:
 	@echo ""
 
 install:
-	curl -sSO https://raw.githubusercontent.com/humangas/fileopener/master/fileopener.sh
-	rm -rf $(FO_INSTALLPATH)/$(FO_CMDNAME)
-	cp $(PWD)/fileopener.sh $(FO_INSTALLPATH)/$(FO_CMDNAME)
-	chmod +x $(FO_INSTALLPATH)/$(FO_CMDNAME)
+	curl -sSO https://raw.githubusercontent.com/humangas/findgrep/master/findgrep.sh
+	rm -rf $(FING_INSTALLPATH)/$(FING_CMDNAME)
+	cp $(PWD)/findgrep.sh $(FING_INSTALLPATH)/$(FING_CMDNAME)
+	chmod +x $(FING_INSTALLPATH)/$(FING_CMDNAME)
 	rm -rf $(NOTE_INSTALLPATH)/$(NOTE_CMDNAME)
 	cp $(PWD)/note.sh $(NOTE_INSTALLPATH)/$(NOTE_CMDNAME)
 	chmod +x $(NOTE_INSTALLPATH)/$(NOTE_CMDNAME)
