@@ -63,7 +63,7 @@ function _grep() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    eval "$NOTE_FILEOPENER" $NOTE_POST_DIR --grep
+    eval "$NOTE_FILEOPENER" --grep $NOTE_POST_DIR
 }
 
 function _finder() {
