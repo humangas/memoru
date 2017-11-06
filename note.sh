@@ -6,7 +6,7 @@ NOTE_POST_DIR=${NOTE_POST_DIR:-~/note}
 NOTE_TEMPLATE_FILE=${NOTE_TEMPLATE_FILE:-}
 NOTE_PREFIX=${NOTE_PREFIX:-}
 NOTE_EXTENSION=".md"
-NOTE_FILEOPENER="~/bin/fing"
+NOTE_FILEOPENER="~/bin/fgo"
 
 
 function _usage() {
@@ -27,8 +27,8 @@ Customize:
     export NOTE_EXTENSION=\".md\"
 
 NOTICE:
-    edit, grep function uses the humangas/findgrep
-    See also: https://github.com/humangas/findgrep
+    edit, grep function uses the \"humangas/fgopen\"
+    See also: https://github.com/humangas/fgopen
 "
 exit 0
 }
