@@ -32,14 +32,14 @@ Customize:
     export NOTE_EXTENSION=".md"
 
 NOTICE:
-    edit, grep function uses the humangas/findgrep
-    See also: https://github.com/humangas/findgrep
+    edit, grep function uses the humangas/fgopen
+    See also: https://github.com/humangas/fgopen
 
 ```
 
 
 ## Dependencies software
-- [humangas/findgrep](https://github.com/humangas/findgrep)
+- [humangas/fgopen](https://github.com/humangas/fgopen)
 
 
 ## Other stuff you might like
