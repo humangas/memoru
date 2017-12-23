@@ -1,7 +1,7 @@
 NOTE_CMDNAME := note
-NOTE_INSTALLPATH := ~/bin
+NOTE_INSTALLPATH := /usr/local/bin
 FGO_CMDNAME := fgo 
-FGO_INSTALLPATH := ~/bin
+FGO_INSTALLPATH := /usr/local/bin
 
 .DEFAULT_GOAL := help
 
