@@ -6,6 +6,8 @@
 
 ## Installation
 ```
+$ brew install --HEAD humangas/apps/note
+OR
 $ git clone https://github.com/humangas/note.git
 $ cd note
 $ make install
