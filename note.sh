@@ -80,18 +80,12 @@ function _list() {
     local stat_option="%w"
 
     if [[ "$1" == "--full-path" ]]; then
-        for f in $(ls $ls_option $NOTE_POST_DIR); do
-            echo "$NOTE_POST_DIR/$f"
-        done
-        exit 0
+        find $NOTE_POST_DIR/* -type f
+    else
+        find $NOTE_POST_DIR/* -type f | sed s@$NOTE_POST_DIR/@@g
     fi
 
-    #echo "$header"
-    for f in $(ls $ls_option $NOTE_POST_DIR); do
-       #local fattr=$(stat -c "%w | %y | %x" $NOTE_POST_DIR/$f | sed -e 's/\.000000000 +0900//g')
-       local fattr=$(stat -c "$stat_option" $NOTE_POST_DIR/$f | sed -e 's/\.000000000 +0900//g')
-       echo "$fattr | $f"
-    done
+    exit 0
 }
 
 function _check_file_exist() {
