@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 NOTE_APPNAME="note"
-NOTE_VERSION="0.2.2"
+NOTE_VERSION="0.3.0"
 NOTE_POST_DIR=${NOTE_POST_DIR:-~/note}
 NOTE_TEMPLATE_FILE=${NOTE_TEMPLATE_FILE:-}
 NOTE_PREFIX=${NOTE_PREFIX:-}
 NOTE_EXTENSION=".md"
-NOTE_FILEOPENER=${NOTE_FILEOPENER:-fgo}
+NOTE_GREP_OPTIONS=${NOTE_GREP_OPTIONS:-"--hidden --ignore .git/ . "} 
 
 
 function _usage() {
@@ -14,21 +14,23 @@ echo "Usage: $NOTE_APPNAME [--version] <command> [<args>]
 Version: $NOTE_VERSION
 
 Command:
-    new <title>           Create note
-    list [--full-path]    List note
-    edit                  Edit note
-    grep                  Grep note
-    finder                Open finder
+    new,n <title>           Create note
+    list,l [--full-path]    List note
+    edit,e [filter]         Edit note
+    grep,g [filter]         Grep note
+    finder,f                Open finder
 
 Customize:
     export NOTE_POST_DIR=\"~/note\"
     export NOTE_TEMPLATE_FILE=
     export NOTE_PREFIX=
     export NOTE_EXTENSION=\".md\"
+    export NOTE_GREP_OPTIONS=\"--hidden --ignore .git/ . \"
 
 NOTICE:
-    edit, grep function uses the \"humangas/fgopen\"
-    See also: https://github.com/humangas/fgopen
+    edit, grep function uses \"fzf\",\"ag\"
+    - fzf: https://github.com/junegunn/fzf
+    - ag: https://github.com/ggreer/the_silver_searcher 
 "
 exit 0
 }
@@ -56,14 +58,33 @@ function _edit() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    eval "$NOTE_FILEOPENER" $NOTE_POST_DIR
+
+    local filter=${1:-}
+    local f=$(ag -g "$filter" $NOTE_POST_DIR \
+        | sed -e "s@^$NOTE_POST_DIR/@@" \
+        | fzf --preview "less -R $NOTE_POST_DIR/{}" \
+        --bind=ctrl-u:half-page-up,ctrl-d:half-page-down,ctrl-y:yank
+    )
+    [[ -z $f ]] && return
+
+    vim "$NOTE_POST_DIR/$f"
 }
 
 function _grep() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
-    eval "$NOTE_FILEOPENER" --grep $NOTE_POST_DIR
+
+    local filter=${1:-.}
+    local f=$(ag $filter $NOTE_GREP_OPTIONS $NOTE_POST_DIR \
+            | sed -e "s@^$NOTE_POST_DIR/@@" \
+            | fzf --tac --bind=ctrl-u:half-page-up,ctrl-d:half-page-down,ctrl-y:yank
+    )
+    [[ -z $f ]] && return
+
+    local path=$(echo $f | cut -d: -f1)
+    local lineno=$(echo $f | cut -d: -f2)
+    vim -c $lineno "$NOTE_POST_DIR/$path" 
 }
 
 function _finder() {
