@@ -19,32 +19,32 @@ $ make install
 ## Usage
 ```
 $ note --help
-Usage: note [--version] <command> [options] [args]
-version: 0.2.0
+Usage: note [--version] <command> [<args>]
+Version: 0.3.0
 
 Command:
-    new  <title>          Create note
-    list [--full-path]    List note
-    edit                  Edit note
-    grep                  Grep note
-    open                  Open finder
+    new,n <title>           Create note
+    list,l [--full-path]    List note
+    edit,e [filter]         Edit note
+    grep,g [filter]         Grep note
+    finder,f                Open finder
 
 Customize:
     export NOTE_POST_DIR="~/note"
     export NOTE_TEMPLATE_FILE=
     export NOTE_PREFIX=
     export NOTE_EXTENSION=".md"
+    export NOTE_GREP_OPTIONS="--hidden --ignore .git/ . "
 
 NOTICE:
-    edit, grep function uses the humangas/fgopen
-    See also: https://github.com/humangas/fgopen
+    edit, grep function uses "fzf","ag"
+    - fzf: https://github.com/junegunn/fzf
+    - ag: https://github.com/ggreer/the_silver_searcher 
 
 ```
 
 
 ## Dependencies software
-- [humangas/fgopen](https://github.com/humangas/fgopen)
+- [junegunn/fzf](https://github.com/junegunn/fzf)
+- [ag(ggreer/the_silver_searcher)](https://github.com/ggreer/the_silver_searcher)
 
-
-## Other stuff you might like
-- [mattn/memo](https://github.com/mattn/memo)
