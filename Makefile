@@ -1,7 +1,5 @@
 NOTE_CMDNAME := note
 NOTE_INSTALLPATH := /usr/local/bin
-FGO_CMDNAME := fgo 
-FGO_INSTALLPATH := /usr/local/bin
 
 .DEFAULT_GOAL := help
 
@@ -18,10 +16,6 @@ help:
 	@echo ""
 
 install:
-	curl -sSO https://raw.githubusercontent.com/humangas/fgopen/master/fgopen.sh
-	rm -rf $(FGO_INSTALLPATH)/$(FGO_CMDNAME)
-	cp $(PWD)/fgopen.sh $(FGO_INSTALLPATH)/$(FGO_CMDNAME)
-	chmod +x $(FGO_INSTALLPATH)/$(FGO_CMDNAME)
 	rm -rf $(NOTE_INSTALLPATH)/$(NOTE_CMDNAME)
 	cp $(PWD)/note.sh $(NOTE_INSTALLPATH)/$(NOTE_CMDNAME)
 	chmod +x $(NOTE_INSTALLPATH)/$(NOTE_CMDNAME)
