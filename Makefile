@@ -3,7 +3,7 @@ NOTE_INSTALLPATH := /usr/local/bin
 
 .DEFAULT_GOAL := help
 
-.PHONY: all help install update
+.PHONY: all help install update test
 
 all:
 
@@ -13,6 +13,7 @@ help:
 	@echo "target:"
 	@echo " - install:   Install note.sh as a $(NOTE_CMDNAME) command."
 	@echo " - update:    After git pull, execute the install command."
+	@echo " - test:      Test note.sh with bats-core/bats-core"
 	@echo ""
 
 install:
@@ -25,3 +26,6 @@ install:
 update:
 	git pull origin master
 	@make install
+
+test:
+	bats test/note.bats
