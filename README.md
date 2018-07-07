@@ -1,6 +1,7 @@
 # note
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
-[![OS macOS](https://img.shields.io/badge/OS-macOS-blue.svg)](OS)  
+[![OS macOS](https://img.shields.io/badge/OS-macOS-blue.svg)](OS)
+[![Build Status](https://travis-ci.org/humangas/note.svg?branch=master)](https://travis-ci.org/humangas/note)  
 "note" is a command line tool to easily take notes from anywhere.
 
 
@@ -20,7 +21,7 @@ $ make install
 ```
 $ note --help
 Usage: note [--version] <command> [<args>]
-Version: 0.3.0
+Version: 0.3.1
 
 Command:
     new,n <title>           Create note
@@ -31,15 +32,16 @@ Command:
 
 Customize:
     export NOTE_POST_DIR="~/note"
-    export NOTE_TEMPLATE_FILE=
-    export NOTE_PREFIX=
+    export NOTE_TEMPLATE_FILE=""
+    export NOTE_PREFIX="%Y-%m-%d_"
     export NOTE_EXTENSION=".md"
     export NOTE_GREP_OPTIONS="--hidden --ignore .git/ . "
+    export NOTE_IGNORE_DIRS=""
 
-NOTICE:
+Dependencies:
     edit, grep function uses "fzf","ag"
     - fzf: https://github.com/junegunn/fzf
-    - ag: https://github.com/ggreer/the_silver_searcher 
+    - ag:  https://github.com/ggreer/the_silver_searcher 
 
 ```
 
