@@ -22,8 +22,8 @@ Command:
 
 Customize:
     export NOTE_POST_DIR=\"~/note\"
-    export NOTE_TEMPLATE_FILE=
-    export NOTE_PREFIX=
+    export NOTE_TEMPLATE_FILE=\"\"
+    export NOTE_PREFIX=\"\"
     export NOTE_EXTENSION=\".md\"
     export NOTE_GREP_OPTIONS=\"--hidden --ignore .git/ . \"
 
