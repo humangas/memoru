@@ -21,14 +21,14 @@ Command:
     finder,f                Open finder
 
 Customize:
-    export NOTE_POST_DIR=\"~/note\"
-    export NOTE_TEMPLATE_FILE=\"\"
-    export NOTE_PREFIX=\"\"
-    export NOTE_EXTENSION=\".md\"
-    export NOTE_GREP_OPTIONS=\"--hidden --ignore .git/ . \"
-    export NOTE_IGNORE_DIRS=\"\"
-
 NOTICE:
+    export NOTE_POST_DIR=\"$NOTE_POST_DIR\"
+    export NOTE_TEMPLATE_FILE=\"$NOTE_TEMPLATE_FILE\"
+    export NOTE_PREFIX=\"$NOTE_PREFIX\"
+    export NOTE_EXTENSION=\"$NOTE_EXTENSION\"
+    export NOTE_GREP_OPTIONS=\"$NOTE_GREP_OPTIONS\"
+    export NOTE_IGNORE_DIRS=\"$NOTE_IGNORE_DIRS\"
+
     edit, grep function uses \"fzf\",\"ag\"
     - fzf: https://github.com/junegunn/fzf
     - ag: https://github.com/ggreer/the_silver_searcher 
