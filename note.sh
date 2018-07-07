@@ -7,7 +7,7 @@ NOTE_TEMPLATE_FILE=${NOTE_TEMPLATE_FILE:-}
 NOTE_PREFIX=${NOTE_PREFIX:-}
 NOTE_EXTENSION=".md"
 NOTE_GREP_OPTIONS=${NOTE_GREP_OPTIONS:-"--hidden --ignore .git/ . "} 
-
+NOTE_IGNORE_DIRS=${NOTE_IGNORE_DIRS:-}
 
 function _usage() {
 echo "Usage: $NOTE_APPNAME [--version] <command> [<args>]
@@ -26,6 +26,7 @@ Customize:
     export NOTE_PREFIX=\"\"
     export NOTE_EXTENSION=\".md\"
     export NOTE_GREP_OPTIONS=\"--hidden --ignore .git/ . \"
+    export NOTE_IGNORE_DIRS=\"\"
 
 NOTICE:
     edit, grep function uses \"fzf\",\"ag\"
@@ -99,11 +100,12 @@ function _list() {
 
     local ls_option="-1"
     local stat_option="%w"
+    _ignore_dirs
 
     if [[ "$1" == "--full-path" ]]; then
-        find $NOTE_POST_DIR/* -type f
+        eval find $NOTE_POST_DIR/* $ignore_dirs_option -type f -print
     else
-        find $NOTE_POST_DIR/* -type f | sed s@$NOTE_POST_DIR/@@g
+        eval find $NOTE_POST_DIR/* $ignore_dirs_option -type f -print | sed s@$NOTE_POST_DIR/@@g
     fi
 
     exit 0
@@ -141,6 +143,15 @@ function _param_check() {
     
     [[ $_is_error -eq 1 ]] && exit 1
     return
+}
+
+_ignore_dirs() {
+    [[ -z "$NOTE_IGNORE_DIRS" ]] && return
+    local _ignore_dirs_path
+    for v in $NOTE_IGNORE_DIRS; do
+        _ignore_dirs_path="$_ignore_dirs_path -path $NOTE_POST_DIR/$v -o"
+    done
+    ignore_dirs_option=" -type d \( ${_ignore_dirs_path%-o} \) -prune -o "
 }
 
 function main() {
