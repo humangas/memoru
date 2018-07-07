@@ -1,10 +1,10 @@
 os: osx
 before_install:
-- brew update
+  - brew update
 install:
-- brew install bats-core
+  - brew install bats-core
 script:
-- make test
+  - make test
 notifications:
   slack:
     secure: iTfj9BNzy3SyUbU2mEkDz9GOB8ZOBgO9kuRMrJeYkV4hgm8Om6q8zZhYbqHiLW744bB/AvGHicCkdE7csJs4UR7yDWZhYqLRDC2SHotLEVZMkp7olzT8eIOnzYlSJQIYFwSvlTtDssdNPQ0W+6CY5pxNbBeTAi7BS4u/WN7mWs4INfK2why9UFw7d9ZjPFMR8tVpEiBxddFtfkydZNF68E5HKVlZGZ8W31pB7dL3QdLNCrv429MSXw5OqV2RtrDrLEIfCndSV4jKTb4jdMVWiGmW8mxchZSaiWWO/tFIs0VdRBhVLgDcyDtpZFEltvXWQ1NFagF8u6WL9ekB8Qb8RAaLP9TZG6uFrONqTuH3F5sFFIrJIbqpcTSewjX/CFUhIUqxPkVUqb6Yn1hQfQguR/mlc1XD9Mfx/eh2CumXJEul4U1hTYDhBGlQkukRi+2APkcrkDVLSMadfK5ahEQ0XHWeLZ98LJkjkxmu6oiUH2LUk4mkChMvJcqaLMQTenwsR/om4Cy0gZuKAXNGsJ1G4tANNANFIn2pr6GIEGW+2xsxVaub2Zhlznum95ewDNtcT/o7xxJnaPGUEVnm0jryQawsLj8JAQdFZVvZrFfCZy9ydadzcc44hRK3iJ/jW5jNKPJzP0rWFhtq/+NGPAEa4Ti7toyLOKFC/bqW840pRb8=
