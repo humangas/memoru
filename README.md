@@ -9,7 +9,8 @@
 ```
 $ brew install --HEAD humangas/apps/note
 ```
-OR
+
+### from source
 ```
 $ git clone https://github.com/humangas/note.git
 $ cd note
