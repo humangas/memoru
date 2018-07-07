@@ -1,0 +1,7 @@
+os: osx
+before_install:
+  - brew update
+install:
+  - brew install bats-core
+script:
+  - make test
