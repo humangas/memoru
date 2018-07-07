@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+
+    # Specify the Xcode version to use
+    macos:
+      xcode: "8.3.3"
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install bats-core/bats-core
+          command: brew install bats-core
+      - run:
+          name: Run tests
+          command: make test
