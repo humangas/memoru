@@ -21,7 +21,6 @@ Command:
     finder,f                Open finder
 
 Customize:
-NOTICE:
     export NOTE_POST_DIR=\"$NOTE_POST_DIR\"
     export NOTE_TEMPLATE_FILE=\"$NOTE_TEMPLATE_FILE\"
     export NOTE_PREFIX=\"$NOTE_PREFIX\"
@@ -29,9 +28,10 @@ NOTICE:
     export NOTE_GREP_OPTIONS=\"$NOTE_GREP_OPTIONS\"
     export NOTE_IGNORE_DIRS=\"$NOTE_IGNORE_DIRS\"
 
+Dependencies:
     edit, grep function uses \"fzf\",\"ag\"
     - fzf: https://github.com/junegunn/fzf
-    - ag: https://github.com/ggreer/the_silver_searcher 
+    - ag:  https://github.com/ggreer/the_silver_searcher 
 "
 exit 0
 }
