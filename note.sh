@@ -9,7 +9,7 @@ NOTE_EXTENSION=".md"
 NOTE_GREP_OPTIONS=${NOTE_GREP_OPTIONS:-"--hidden --ignore .git/ . "} 
 NOTE_IGNORE_DIRS=${NOTE_IGNORE_DIRS:-}
 
-function _usage() {
+usage() {
 echo "Usage: $NOTE_APPNAME [--version] <command> [<args>]
 Version: $NOTE_VERSION
 
@@ -36,12 +36,12 @@ Dependencies:
 exit 0
 }
 
-function _version() {
+version() {
     echo "$NOTE_APPNAME $NOTE_VERSION"
     exit 0
 }
 
-function _new() {
+new() {
     local title="$1"
     if [[ $# -eq 0 ]]; then
         echo "Usage: $NOTE_APPNAME new <title>"
@@ -55,7 +55,7 @@ function _new() {
     vim "$fpath"
 }
 
-function _edit() {
+edit() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
@@ -71,7 +71,7 @@ function _edit() {
     vim "$NOTE_POST_DIR/$f"
 }
 
-function _grep() {
+grep_note() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
@@ -88,12 +88,12 @@ function _grep() {
     vim -c $lineno "$NOTE_POST_DIR/$path" 
 }
 
-function _finder() {
+finder_note() {
     open -a finder "$NOTE_POST_DIR"
     exit 0
 }
 
-function _list() {
+list() {
     _check_file_exist
     local retv=$?
     [[ $retv -eq 1 ]] && return $retv
@@ -111,7 +111,7 @@ function _list() {
     exit 0
 }
 
-function _check_file_exist() {
+_check_file_exist() {
     local _is_error=0
     
     if [[ ! -e $NOTE_POST_DIR ]]; then
@@ -127,7 +127,7 @@ function _check_file_exist() {
     fi
 }
 
-function _param_check() {
+_param_check() {
     local _is_error=0
 
     [[ ! -e $NOTE_POST_DIR ]] && mkdir -p $NOTE_POST_DIR
@@ -154,9 +154,9 @@ _ignore_dirs() {
     ignore_dirs_option=" -type d \( ${_ignore_dirs_path%-o} \) -prune -o "
 }
 
-function main() {
-    [[ $# -eq 0 ]] && _usage
-    [[ "$1" == "--version" ]] && _version
+main() {
+    [[ $# -eq 0 ]] && usage
+    [[ "$1" == "--version" ]] && version
     
     _param_check
 
@@ -164,13 +164,13 @@ function main() {
     shift
 
     case $subcmd in
-        new|n)     _new "$@" && return ;;
-        list|l)    _list "$@" && return ;;
-        edit|e)    _edit "$@" && return ;;
-        grep|g)    _grep "$@" && return ;;
-        finder|f)  _finder "$@" && return ;;
-        version)   _version ;;
-        *)         _usage ;;
+        new|n)     new "$@" && return ;;
+        list|l)    list "$@" && return ;;
+        edit|e)    edit "$@" && return ;;
+        grep|g)    grep_note "$@" && return ;;
+        finder|f)  finder_note "$@" && return ;;
+        version)   version ;;
+        *)         usage ;;
     esac
 }
 
